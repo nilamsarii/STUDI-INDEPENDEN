@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <!-- input -->
+        <div id="newtask">
+            <input type="text" placeholder="Add Tasks">
+            <button id="add">Add</button>
+        </div>
+        <!-- outputnya -->
+        <div id="tasks"></div> 
+    </div>
+    <script>
+        let element = document.querySelector('#add');
+        element.addEventListener('click', () => {
+            let input = document.querySelector('#newtask input');
+            let output = document.querySelector('#tasks');
+            // let tasks = document.querySelectorAll('#taskname');
+            // if(tasks){
+            //     for (const task of tasks) {
+            //         console.log("jalan")
+            //         console.log('task', typeof task.textContent.trim());
+            //         console.log("input value", typeof input.value);
+            //         console.log("compare", task.textContent.trim() === input.value.trim());
+            //         if(task.textContent.trim() === input.value.trim()){
+            //             alert("gak boleh ");
+            //           return
+            //         }
+            //     }
+            // }
+             if(!input.value){
+                alert("gabolee kosong")
+            }else{
+                output.innerHTML +=  `
+                        <div class="task">
+                <span id="taskname">
+                    ${input.value}
+                </span>
+                <button class="delete">
+                X
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>`;
+            let button_delete =  document.querySelectorAll(".delete");
+            
+            for (const buttonDelete of button_delete) {
+                buttonDelete.addEventListener('click',()=>{
+                    let item = buttonDelete.parentNode
+                    console.log("ini item",item)
+                    item.remove()
+                })
+            }
+            // for (const item of current_tasks) {
+            //     item.addEventListener('click', ()=>{
+            //         console.log("helloo")
+            //         item.parentNode.remove();
+            //     })
+            //    }
+            }
+        })
+        //     document.querySelector('#add').onclick = function(){
+    //         if(document.querySelector('#newtask input').value.length == 0){
+    //             alert("gak boleh mager")
+    //         }
+    //         document.querySelector('#tasks').innerHTML += `
+    //                     <div class="task">
+    //             <span id="taskname">
+    //                 ${document.querySelector('#newtask input').value}
+    //             </span>
+    //             <button class="delete">
+    //             X
+    //                 <i class="far fa-trash-alt"></i>
+    //             </button>
+    //         </div>`
+    //        let current_tasks =  document.querySelectorAll(".delete");
+    //        console.log("delete",current_tasks)
+    //             for(var i=0; i<current_tasks.length; i++){
+    //         current_tasks[i].onclick = function(){
+    //             this.parentNode.remove();
+    //         }
+    //     }
+    //     }
+    // //         document.querySelector('#push').onclick = function(){
+    // //     if(document.querySelector('#newtask input').value.length == 0){
+    // //         alert("Kindly Enter Task Name!!!!")
+    //     }
+    //     else{
+    //         document.querySelector('#tasks').innerHTML += `
+    //             <div class="task">
+    //                 <span id="taskname">
+    //                     ${document.querySelector('#newtask input').value}
+    //                 </span>
+    //                 <button class="delete">
+    //                 X
+    //                     <i class="far fa-trash-alt"></i>
+    //                 </button>
+    //             </div>
+    //         `;
+    //         var current_tasks = document.querySelectorAll(".delete");
+    //         for(var i=0; i<current_tasks.length; i++){
+    //             current_tasks[i].onclick = function(){
+    //                 this.parentNode.remove();
+    //             }
+    //         }
+    //     }
+    // }
+    </script>
+</script>
+</body>
+</html>
